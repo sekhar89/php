@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "sekhar111/dockertest"
     registryCredential = "docker-hub-credentials"
+    dockerImage = ''
   }
   agent any
   stages {
@@ -13,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
