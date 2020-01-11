@@ -17,5 +17,13 @@ pipeline {
         }
       }
     }
+	stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( 'https://hub.docker.com/repository/docker/sekhar111/dockertest', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
   }
 }
