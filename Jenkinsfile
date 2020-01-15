@@ -4,7 +4,9 @@ node {
   def dockerImage
 
   stage('Build image') {
+	  step {
     dockerImage = docker.build("sekhar111/dockertest:test")
+	  }
   }
 
   stage('Push image') {
